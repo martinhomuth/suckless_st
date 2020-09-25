@@ -10,6 +10,12 @@ urls="$(sed 's/.*│//g' | tr -d '\n' |
 
 [ -z "$urls" ] && exit
 
-chosen="$(echo "$urls" | dmenu -i -p 'Follow which url?' -l 10 -w ${WINDOWID})"
+# use gruvbox theme for dmenu (see dwm/config.h)
+normbgcolor="#282828"
+normfgcolor="#ebdbb2"
+selfgcolor="#282828"
+selbgcolor="#d79921"
+
+chosen="$(echo "$urls" | dmenu -i -p 'Follow which url?' -l 10 -w ${WINDOWID} -nb ${normbgcolor} -nf ${normfgcolor} -sb ${selbgcolor} -sf ${selfgcolor})"
 
 setsid xdg-open "$chosen" >/dev/null 2>&1 &
