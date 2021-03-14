@@ -690,7 +690,6 @@ execsh(char *cmd, char **args)
 {
 	char *sh, *prog, *arg;
 	const struct passwd *pw;
-	printf("execsh\n");
 
 	errno = 0;
 	if ((pw = getpwuid(getuid())) == NULL) {
@@ -709,7 +708,6 @@ execsh(char *cmd, char **args)
 	} else if (scroll) {
 		prog = scroll;
 		arg = utmp ? utmp : sh;
-		printf("scroll set\n");
 	} else if (utmp) {
 		prog = utmp;
 		arg = NULL;
